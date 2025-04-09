@@ -28,4 +28,47 @@ public class TeamTest {
         assertEquals("Team(name=test-team, members=[])", team.toString());
     }
 
+    @Test
+    public void equals_same_obj_returns_true() {
+        assertEquals(true, team.equals(team));
+    }
+
+    @Test
+    public void equals_not_InstanceOf_returns_false() {
+        assertEquals(false, team.equals("stringObj"));
+    }
+
+    @Test
+    public void equal_same_name_and_members_returns_true() {
+        Team team2 = new Team("test-team");
+        assertEquals(true, team.equals(team2));
+    }
+
+    @Test
+    public void equal_same_name_diff_members_returns_false() {
+        Team team2 = new Team("test-team");
+        team2.addMember("Ada");
+        assertEquals(false, team.equals(team2));
+    }
+
+    @Test
+    public void hashCode_same_objects_return_same_hashCode() {
+        Team t1 = new Team();
+        t1.setName("foo");
+        t1.addMember("bar");
+        Team t2 = new Team();
+        t2.setName("foo");
+        t2.addMember("bar");
+        assertEquals(t1.hashCode(), t2.hashCode());
+    }
+
+    @Test
+    public void hashCode_returns_0() {
+        Team t = new Team();
+        int result = t.hashCode();
+        int expectedResult = 1;
+        assertEquals(expectedResult, result);
+    }
+        
+
 }
