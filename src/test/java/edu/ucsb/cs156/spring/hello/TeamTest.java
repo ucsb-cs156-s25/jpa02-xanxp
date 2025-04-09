@@ -52,6 +52,12 @@ public class TeamTest {
     }
 
     @Test
+    public void equal_diff_name_same_members_returns_false() {
+        Team team2 = new Team("not-test-team");
+        assertEquals(false, team.equals(team2));
+    }
+
+    @Test
     public void hashCode_same_objects_return_same_hashCode() {
         Team t1 = new Team();
         t1.setName("foo");
